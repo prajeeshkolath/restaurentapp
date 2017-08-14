@@ -1,4 +1,8 @@
-var app = angular.module("gst", ["ngRoute", "ngStorage", "gstCommonModule", "gstSharedModule", "gstUMAModule", "gstDashboardModule","gstGSTR1Module"]);
+(function() {
+
+'use strict';
+
+var app = angular.module("restaurantApp", ["ngRoute", "ngStorage"]);
 
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
@@ -9,6 +13,37 @@ app.config(["$routeProvider", function ($routeProvider) {
             redirectTo: "/login"
         });
 }]);
+
+
+app.controller('AuthController',AuthController);
+
+
+function AuthController($auth, $state) {
+
+        var vm = this;
+
+        vm.login = function() {
+
+            var credentials = {
+                email: vm.email,
+                password: vm.password
+            }
+
+            // Use Satellizer's $auth service to login
+            $auth.login(credentials).then(function(data) {
+
+                // If login is successful, redirect to the users state
+                $state.go('users', {});
+            });
+        }
+
+    }
+
+})();
+
+
+
+/*
 
 app.config(["$httpProvider", function ($httpProvider) {
     $httpProvider.interceptors.push('HTTPRequestHandler');
@@ -37,4 +72,4 @@ app.config(function ($provide) {
         };
     });
 });
-
+*/
