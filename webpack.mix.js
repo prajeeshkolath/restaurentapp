@@ -15,7 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
   .sass('resources/assets/sass/app.scss', 'public/css')
   .copy('bower_components/bootstrap/dist/css/bootstrap.css', 'public/css/bootstrap.css')
   .combine(['bower_components/jquery/dist/jquery.js','bower_components/bootstrap/dist/js/bootstrap.js',
-  'bower_components/angular/angular.js','bower_components/satellizer/dist/satellizer.js']
+  'bower_components/angular/angular.js','bower_components/angular-ui-router/release/angular-ui-router.js','bower_components/satellizer/dist/satellizer.js']
                  ,'public/js/bundle.js');
 
 //let mix = require('laravel-mix');
